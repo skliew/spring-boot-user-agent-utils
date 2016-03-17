@@ -13,7 +13,6 @@ import javax.annotation.PreDestroy;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 @Service
 public class GeoLocationService {
@@ -24,6 +23,7 @@ public class GeoLocationService {
 
     @PostConstruct
     public void init() {
+        System.out.println("PostConstruct initialize databaseReader");
         Resource resource = resourceLoader.getResource("classpath:GeoLite2-City.mmdb");
         try {
             File database = resource.getFile();
