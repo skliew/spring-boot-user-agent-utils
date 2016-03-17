@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetAddress;
 
 @Service
@@ -26,7 +27,7 @@ public class GeoLocationService {
         System.out.println("PostConstruct initialize databaseReader");
         Resource resource = resourceLoader.getResource("classpath:GeoLite2-City.mmdb");
         try {
-            File database = resource.getFile();
+            InputStream database = resource.getInputStream();
             databaseReader = new DatabaseReader.Builder(database).build();
         }
         catch (IOException e) {
