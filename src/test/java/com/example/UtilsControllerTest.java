@@ -17,7 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Application.class)
 @WebAppConfiguration
-public class UserAgentControllerTest {
+public class UtilsControllerTest {
 
     private MockMvc mockMvc;
 
@@ -32,5 +32,6 @@ public class UserAgentControllerTest {
     @Test
     public void endPointTest() throws Exception {
         this.mockMvc.perform(get("/ua")).andExpect(status().isOk());
+        this.mockMvc.perform(get("/geolocation")).andExpect(status().isOk());
     }
 }
