@@ -27,6 +27,7 @@ public class UserAgentStringController {
     public GeoLocationData geolocation(HttpServletRequest request,
                                     @RequestParam(value="ip", defaultValue="") final String ipParam) {
         String ipAddress = ipParam.isEmpty()? request.getRemoteAddr() : ipParam;
+        System.out.println("IP " + ipAddress);
         GeoLocationData result = geoLocationService.getGeoLocation(ipAddress);
         return result;
     }
