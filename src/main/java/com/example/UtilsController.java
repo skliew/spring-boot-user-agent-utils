@@ -14,7 +14,8 @@ public class UtilsController {
     @Autowired
     private GeoLocationService geoLocationService;
 
-    private static final Logger logger = LoggerFactory.getLogger(UtilsController.class);
+    @Autowired
+    private Logger logger;
 
     @RequestMapping(path="/ua")
     public UserAgent uas(@RequestParam(value="uas", defaultValue="") final String uas,
