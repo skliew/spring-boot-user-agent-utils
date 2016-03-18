@@ -1,6 +1,8 @@
 package com.example;
 
 import eu.bitwalker.useragentutils.UserAgent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 public class UtilsController {
 
     @Autowired
-    GeoLocationService geoLocationService;
+    private GeoLocationService geoLocationService;
+
+    private static final Logger logger = LoggerFactory.getLogger(UtilsController.class);
 
     @RequestMapping(path="/ua")
     public UserAgent uas(@RequestParam(value="uas", defaultValue="") final String uas,
@@ -24,7 +28,7 @@ public class UtilsController {
     public GeoLocationData geolocation(HttpServletRequest request,
                                     @RequestParam(value="ip", defaultValue="") final String ipParam) {
         String ipAddress = ipParam.isEmpty()? request.getRemoteAddr() : ipParam;
-        System.out.println("IP " + ipAddress);
+        logger.info("IP Address: " + ipAddress);
         GeoLocationData result = geoLocationService.getGeoLocation(ipAddress);
         return result;
     }
