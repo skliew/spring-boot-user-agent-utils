@@ -56,7 +56,7 @@ public class GeoLocationService {
 
     @PreDestroy
     public void destroy() {
-        System.err.println("Destroying GeoLocationService");
+        logger.info("Destroying GeoLocationService");
         if (databaseReader != null) {
             try {
                 databaseReader.close();
